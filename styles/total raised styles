@@ -1,0 +1,14 @@
+/* Add to your styles/Home.module.css */
+.totalRaised {
+  background-color: rgba(106, 13, 173, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.totalAmount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffd700;
+}
