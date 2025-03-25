@@ -1,0 +1,22 @@
+// Add this to your pages/index.js
+const [totalRaised, setTotalRaised] = useState(0);
+
+useEffect(() => {
+  // Fetch the total raised
+  fetch('/api/get-total-raised')
+    .then(response => response.json())
+    .then(data => {
+      if (data.totalRaised) {
+        setTotalRaised(data.totalRaised);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching total:', error);
+    });
+}, []);
+
+// Then in your JSX, add this where you want to display the total:
+<div className={styles.totalRaised}>
+  <h3>Total Raised So Far</h3>
+  <p className={styles.totalAmount}>${totalRaised.toFixed(2)}</p>
+</div>
