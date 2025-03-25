@@ -1,0 +1,16 @@
+/* Alternative version with gradient background instead of image */
+body {
+  /* Magical gradient background inspired by Alice in Wonderland colors */
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: "Alice", "Playfair Display", serif;
+  text-align: center;
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
