@@ -1,8 +1,23 @@
 {
-  "name": "my-v0-project",
+  "name": "alice-in-greekland",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "echo 'no build script'"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "micro": "^10.0.1",
+    "next": "13.4.19",
+    "next-auth": "^4.22.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "stripe": "^12.0.0"
+  },
+  "devDependencies": {
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.2"
   }
 }
