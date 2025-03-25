@@ -23,22 +23,29 @@ export default async function handler(req, res) {
 
       // Save donation to database
       try {
+        console.log("Attempting to connect to MongoDB...");
         const client = await clientPromise;
-        const db = client.db("aliceingreekland");
+        console.log("Connected to MongoDB client");
         
-        await db.collection("donations").insertOne({
+        const db = client.db("aliceingreekland");
+        console.log("Accessed aliceingreekland database");
+        
+        const donation = {
           paymentIntentId: paymentIntent.id,
           donorName,
           donorEmail,
           amount,
           memberCredited,
           memberSlug,
-          status: "pending", // Will be updated to "completed" by webhook
+          status: "pending",
           timestamp: new Date().toISOString(),
-        });
-        console.log("Donation saved to database:", paymentIntent.id);
+        };
+        console.log("Prepared donation document:", donation);
+        
+        const result = await db.collection("donations").insertOne(donation);
+        console.log("Donation saved to database:", result);
       } catch (dbError) {
-        console.error("Database error:", dbError);
+        console.error("Database error details:", dbError);
         // Continue even if database save fails
         // This ensures the payment can still be processed
       }
