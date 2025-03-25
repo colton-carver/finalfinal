@@ -17,7 +17,6 @@ export default async function handler(req, res) {
     try {
       const buf = await buffer(req);
       event = stripe.webhooks.constructEvent(buf.toString(), sig, process.env.STRIPE_WEBHOOK_SECRET);
-      console.log("Webhook verified, event type:", event.type);
     } catch (err) {
       console.error(`Webhook Error: ${err.message}`);
       return res.status(400).json({ error: `Webhook Error: ${err.message}` });
@@ -26,12 +25,12 @@ export default async function handler(req, res) {
     // Handle the event
     if (event.type === "payment_intent.succeeded") {
       const paymentIntent = event.data.object;
-      console.log("Payment succeeded:", paymentIntent.id);
 
       try {
+        // Update the donation status in the database
         const client = await clientPromise;
         const db = client.db("aliceingreekland");
-        
+
         const result = await db.collection("donations").updateOne(
           { paymentIntentId: paymentIntent.id },
           { $set: { status: "completed" } }
