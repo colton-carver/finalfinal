@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support the Alice in Greekland Community Food Drive">
+    <title>Alice in Greekland</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="wonderland-elements">
+        <div class="teacup"></div>
+        <div class="pocket-watch"></div>
+        <div class="mushroom"></div>
+        <div class="playing-card"></div>
+    </div>
+
+    <header>
+        <h1>Alice in Greekland🫖🕰️🐇</h1>
+        <h2>Kappa Delta, Thumpers, Beta Sigma Psi</h2>
+    </header>
+    
+    <main>
+        <section class="donation-section">
+            <h2>Support Our Community Food Drive</h2>
+            <p>Donate now and help us win Greek Week!</p>
+            
+            <form id="donation-form">
+                <div class="form-group">
+                    <label for="donor-name">Your Name:</label>
+                    <input type="text" id="donor-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="donor-email">Your Email:</label>
+                    <input type="email" id="donor-email" required>
+                </div>
+                
+                <div class="form-group member-select-container">
+                    <label for="member-select">Select a Member to Credit:</label>
+                    <select id="member-select">
+                        <!-- Member options will be populated by JavaScript -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Donation Amount ($):</label>
+                    <input type="number" id="amount" min="1" required>
+                </div>
+                
+                <div id="card-element" class="form-group">
+                    <!-- Stripe Card Element will be inserted here -->
+                </div>
+                <div id="card-errors" class="error-message" role="alert"></div>
+                
+                <div class="button-group">
+                    <button type="submit" id="submit-button" class="btn primary-btn">
+                        <span id="button-text">Donate Now</span>
+                        <div id="spinner" class="hidden"></div>
+                    </button>
+                </div>
+            </form>
+            
+            <div id="payment-message" class="hidden"></div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Alice in Greekland. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
